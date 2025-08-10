@@ -1,0 +1,10 @@
+.vscode
+
+/target
+**/*/node_modules
+
+data
+docs
+
+.shuttle*
+Secrets*.toml

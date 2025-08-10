@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@plugin 'daisyui' {
+  themes:
+    autumn --default,
+    coffee --prefersdark;
+}
+
+[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
+
+.mdxeditor {
+  @apply textarea w-full;
+}
