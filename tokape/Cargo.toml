@@ -9,5 +9,5 @@ publish = false
 comemo = "0.5.0"
 jiff = { version = "0.2.15", features = ["serde"] }
 thiserror = "2"
-typst = "0.13.1"
-typst-pdf = "0.13.1"
+typst = "0.14.0"
+typst-pdf = "0.14.0"

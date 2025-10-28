@@ -16,8 +16,10 @@ pub(crate) enum Error {
     Decode(#[from] rmp_serde::decode::Error),
     #[error("typst compilation error: {0}")]
     Typst(#[from] tokape::CompilationError),
-    #[error("yaml error: {0}")]
-    Yaml(#[from] serde_yml::Error),
+    #[error("yaml decode error: {0}")]
+    YamlDecode(#[from] serde::de::value::Error),
+    #[error("yaml encode error: {0}")]
+    YamlEncode(#[from] serde_yaml2::ser::Errors),
 }
 
 impl axum::response::IntoResponse for Error {

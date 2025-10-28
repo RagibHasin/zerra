@@ -29,7 +29,7 @@ use typst::foundations::{Bytes, Datetime};
 use typst::syntax::{FileId, Source, VirtualPath};
 use typst::text::{Font, FontBook};
 use typst::utils::LazyHash;
-use typst::{Library, World};
+use typst::{Library, LibraryExt, World};
 use typst_pdf::PdfOptions;
 
 /// Errors that can occur during compilation
@@ -97,7 +97,7 @@ struct TypstWorld {
 impl TypstWorld {
     fn new() -> Result<Self, CompilationError> {
         // Create standard library
-        let library = LazyHash::new(Library::builder().build());
+        let library = LazyHash::new(Library::default());
 
         // Discover fonts
         let mut fonts = Vec::new();

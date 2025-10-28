@@ -91,7 +91,7 @@ impl<'db> Context<'db> {
             .await
             .map(|r| r.get::<Vec<u8>, _>(0))?;
         let zerra: types::zerra::Zerra = rmp_serde::from_slice(&blob)?;
-        let yaml = serde_yml::to_string(&zerra)?;
+        let yaml = serde_yaml2::to_string(&zerra)?;
         Ok(Attachment::new(yaml)
             .content_type("application/yaml")
             .filename(format!("{id}.yaml")))
@@ -100,7 +100,7 @@ impl<'db> Context<'db> {
     pub(crate) async fn import(self, yaml: &str) -> Result {
         let zerra = types::zerra::Zerra {
             id: uuid::Uuid::new_v4().hyphenated().to_string(),
-            ..serde_yml::from_str(yaml)?
+            ..serde_yaml2::from_str(yaml)?
         };
 
         sqlx::query("insert into vus (id, owner, data, last_modified) values ($1, $2, $3, $4)")

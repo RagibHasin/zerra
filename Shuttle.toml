@@ -1,2 +1,6 @@
 [build]
-assets = ["frontend/dist"]
+assets = ["frontend/dist/*"]
+
+[deploy]
+include = ["frontend/dist/*"]
+deny_dirty = true
